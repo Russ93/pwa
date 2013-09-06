@@ -1,0 +1,50 @@
+/*
+Russell Schlup
+September 4th, 2013
+Finished at: 4:08PM
+*/
+var p1 = ["Xandir Cruiz: ", 100, 25];
+var p2 = ["Bob Thatcher: ", 100, 20];
+
+var rnd = 1;
+var message = "";
+
+function fight(){
+		message = p1[0]+":"+p1[1]+"  *Start*  "+p2[0]+":"+p1[1];
+		alert(message);
+	for(var i=0; i<10; i++){
+		var dmg1 = Math.round(Math.random()*(p1[2]));
+		var dmg2 = Math.round(Math.random()*(p2[2]));
+		
+		if(p1[1]>0){
+			p1[1]-=dmg2;
+		}
+		if(p2[1]>0){
+			p2[1]-=dmg1;
+		}
+		var result = winnerCheck();
+
+		if (result==="no winner"){
+			message =p1[0]+":"+p1[1]+"  Round "+rnd+" Over"+"  "+p2[0]+":"+p2[1];
+			alert(message);
+			rnd++;
+		}else{
+			alert(result);
+			break;
+		}
+		console.log(p1[1]+","+ p2[1]);
+	}// while loop
+}
+
+function winnerCheck(){
+	var result= "no winner";
+	if (p1[1]<1 && p2[1]<1){
+		result = "It was a Tie";
+	}else if(p1[1]<1){
+		result =p2[0]+" Won!"
+	}else if (p2[1]<1){
+		result = p1[0]+" Won!"
+	}
+	return result;
+}
+fight();
