@@ -3,6 +3,8 @@ Russell Schlup
 September 4th, 2013
 Finished at: 4:08PM
 */
+// self-executing function
+(function(){
 var p1Name = "Xandir Cruiz: ";
 var p2Name = "Bob Thatcher: ";
 
@@ -54,3 +56,4 @@ function winnerCheck(){
 	return result;
 }
 fight();
+})();

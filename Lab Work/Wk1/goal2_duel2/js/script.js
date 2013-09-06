@@ -3,6 +3,8 @@ Russell Schlup
 September 4th, 2013
 Finished at: 4:08PM
 */
+// self-executing function
+(function(){
 var p1 = ["Xandir Cruiz: ", 100, 25];
 var p2 = ["Bob Thatcher: ", 100, 20];
 
@@ -48,3 +50,4 @@ function winnerCheck(){
 	return result;
 }
 fight();
+})();
