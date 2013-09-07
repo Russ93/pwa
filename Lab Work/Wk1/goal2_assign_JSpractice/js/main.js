@@ -40,45 +40,81 @@
             from the array
          - return the array
          - console.log the answer outside of the function
+         
      ********************************************/
 
-    console.log('------ Goal2: Assignment: JavaScript Practice ----------');
 
+    console.log('------ Goal2: Assignment: JavaScript Practice ----------');
+    
     console.log("1. avg of an array of numbers");
     var avgNumbers = function(arr){
-
-        //CODE GOES HERE
+    	var nums = arr;
+    	var amt = nums.length;
+    	var sum = 0;
+    	
+    	for(var i=0; i<amt; i++){
+	    	sum+=nums[i];
+    	}
+    	
+    	var avg=sum/amt;
+    	
+    	return String(avg);
     };
-
     console.log('avg number = ', avgNumbers([1,2,3,4,5]));
 
-    //--------------------------------------------------------
-    console.log("2. concat first and last name");
 
-        //PUT FUNCTION HERE
+    //--------------------------------------------------------
+    console.log("2. contact first and last name");
+
+    function fullName(firstName, lastName){
+	    return firstName+" "+lastName;
+    }
 
     console.log(fullName('James', 'Bond'));
 
     //--------------------------------------------------------
     console.log("3. word count");
     var ipsum = "this is test text that is being used as input to a function"
-
-        //PUT FUNCTION HERE
-
+    
+    function wordCount(str){
+    	var words = str.split(" ");
+    	var spaces = String(words.length++);
+    	return spaces;
+    }
+    
     console.log(wordCount(ipsum));
 
     //--------------------------------------------------------
     console.log("4. sentence char count");
 
-        //PUT FUNCTION HERE
+    function charCount(str){
+	    return String(str.length);
+    }
 
     console.log(charCount(ipsum));
 
     //--------------------------------------------------------
     console.log("5. how many vowels in a word");
+    	
+/*
+    5.  create a function named 'vowelsInWord'
+         - accept 1 parameter into the function that is a a one word string
+         - return the number of vowels in the word
+         - console.log the answer outside of the function
+*/
+    function vowelsInWord(str){
+    	var vowels = 0;
+    	var letters = str.split("");
+    	
+    	letters.forEach(function (v){
+	    	if(v=="a"||v=="e"||v=="i"||v=="o"||v=="u"){
+		    	vowels++;
+	    	}
+    	})//for
 
-        //PUT FUNCTION HERE
-
+    	return String(vowels);
+    }// function
+    	
     console.log(vowelsInWord('JavaScript'));
 
     //--------------------------------------------------------
