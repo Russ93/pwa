@@ -119,8 +119,24 @@
 
     //--------------------------------------------------------
     console.log("6. find number and create an array of even or odd numbers");
-
-        //PUT FUNCTION HERE
+    
+	function findNum(arr, bool){
+		var nums = [];
+		if(!(bool==true)){
+			for(var i=0; i<arr.length; i++){
+				if(arr[i]%2==1){
+					nums.push(arr[i]);
+				}//forloop
+			}//forloop
+		}else{
+			for(var i=0; i<arr.length; i++){
+				if(arr[i]%2==0){
+					nums.push(arr[i]);
+				}//if
+			}//forloop
+		}//else
+		return nums;
+	}//function
 
     console.log(findNum([31,22,4,67,83,6,5,4]));
     console.log(findNum([31,22,4,67,83,6,5,4], false));
