@@ -29,14 +29,13 @@
 	
 	// Validates search query
 	var validqte = function(query){
-		
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) == " "){
 			query = query.substring(1, query.length);
 		};
-		while(query.charAt(query.length-1) === ""){
+		while(query.charAt(query.length-1) === " "){
 			query = query.substring(0, query.length-1);
-		;
+		};
 		
 		// Check search length, must have 3 characters
 		if(query.length < 3){
@@ -46,17 +45,17 @@
 			searchInput.focus();
 			return;
 		};
-		
-		searchSomething(query);
+		console.log("hello");
+		goSearch(query);
 	};
 	
 	// Finds search matches
-	var searchSomething = function(query){
+	var goSearch = function(query){
 		
-			// split the user's search query string into an array
+		// split the user's search query string into an array
 		var queryArray = query.split(" ");
-			
-			// array to store matched results from database.js
+		
+		// array to store matched results from database.js
 		var results = [];
 	
 			// loop through each index of db array
@@ -134,4 +133,5 @@
         // return false is needed for most events - this will be reviewed in upcoming course material
         // THE LINE DIRECTLY BELOW IS CORRECT
 		return false;
+		};
 })();
