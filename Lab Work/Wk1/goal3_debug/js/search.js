@@ -1,6 +1,6 @@
 // 14 total errors
-(function(){
-	var db = [
+(function () {
+    var db = [
 	"JavaScript Version History|http://http://wddbs.com/javascript/sfw/online#p=videos&s=3&file=01.html",
 	"JavaScript in the Browser|http://wddbs.com/javascript/sfw/online/#p=videos&s=3&file=01.html",
 	"Script Tag|http://wddbs.com/javascript/sfw/online/#p=videos&s=1&file=02.html",
@@ -25,15 +25,14 @@
 	// Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
 	var resultsDIV = document.getElementById("results"),
 		searchInput = document.forms[0].search,
-		currentSearch = ''
-	;
+		currentSearch = '';
 	
 	// Validates search query
 	var validqte = function(query){
 		
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) == " "){
-			query = query.substring(1, query.length-1);
+			query = query.substring(1, query.length);
 		};
 		while(query.charAt(query.length-1) === ""){
 			query = query.substring(0, query.length-1);
@@ -48,21 +47,21 @@
 			return;
 		};
 		
-		search(query);
+		searchSomething(query);
 	};
 	
 	// Finds search matches
-	var search = function(query)
+	var searchSomething = function(query){
 		
-		// split the user's search query string into an array
+			// split the user's search query string into an array
 		var queryArray = query.split(" ");
-		
-		// array to store matched results from database.js
+			
+			// array to store matched results from database.js
 		var results = [];
-
-		// loop through each index of db array
+	
+			// loop through each index of db array
 		for(var i=0, j=db.length; i<j; i++){
-		
+			
 			// each db[i] is a single video item, each title ends with a pipe "|"
 			// save a lowercase variable of the video title
 			var dbTitleEnd = db[i].indexOf('|');
@@ -79,18 +78,18 @@
 				if(compare !== -1){
 					results.push(db[i]);
 				};
-			;
-		;
-		
-		results.sort();
-		
-		// Check that matches were found, and run output functions
-		if(results.length === 0){
-			noMatch();
-		}else{
-			showMatches(results);
+			};
 		};
-	};
+			
+			results.sort();
+			
+			// Check that matches were found, and run output functions
+			if(results.length === 0){
+				noMatch();
+			}else{
+				showMatches(results);
+			};//else
+	};//function
 	
 	// Put "No Results" message into page (DO NOT FIX THE HTML VAR NOR THE innerHTML)
 	var noMatch = function(){
@@ -107,8 +106,7 @@
 		// THE NEXT 4 LINES ARE CORRECT.
 		var html = '<p>Results</p>', 
 			title, 
-			url
-		;
+			url;
 		
 		// loop through all the results search() function
 		for(var i=0, j=results.length; i<j; i++){
@@ -136,6 +134,4 @@
         // return false is needed for most events - this will be reviewed in upcoming course material
         // THE LINE DIRECTLY BELOW IS CORRECT
 		return false;
-	;
-
 })();
