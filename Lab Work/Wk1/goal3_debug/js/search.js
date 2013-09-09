@@ -1,6 +1,5 @@
 // 16 total errors
 (function () {
-	"use strict";
     // Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
     var resultsDIV = document.getElementById("results"),
         searchInput = document.forms[0].search,
