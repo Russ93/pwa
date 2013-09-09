@@ -23,7 +23,6 @@
 			searchInput.focus();
 			return;
 		};
-		console.log("hello");
 		goSearch(query);
 	};
 	
