@@ -135,7 +135,7 @@
 				}//if
 			}//forloop
 		}//else
-		return nums;
+		return String(nums);
 	}//function
 
     console.log(findNum([31,22,4,67,83,6,5,4]));
