@@ -26,23 +26,19 @@ function starter(){
 function fight(){
 	var dmg1 = Math.round(Math.random()*(p1[2]));
 	var dmg2 = Math.round(Math.random()*(p2[2]));
-	
-	if(p1[1]>0){
+	var result = winnerCheck();
+	if(result=="no winner"){
 		p1[1]-=dmg2;
 	}
-	if(p2[1]>0){
+	if(result=="no winner"){
 		p2[1]-=dmg1;
 	}
-	var result = winnerCheck();
 	if (result==="no winner"){
 		starter();	
 		rnd++;
 		dom.rndT.innerHTML = "Round"+String(rnd);
 	}else{
 		dom.rndT.innerHTML = String(result);
-	}
-	if (result==!("no winner")){
-		r();
 	}
 	console.log(result);
 }// fight
@@ -63,7 +59,11 @@ function r(){
 	result= "no winner";
 	starter();
 }
-
-dom.btn.addEventListener("click",fight,false);
+if(p1[1]>0&&p2[1]>0){
+	dom.btn.addEventListener("click",fight,false);
+}else{
+	dom.btn.removeEventListener("click",fight,false);
+	dom.btn.addEventListener("click",r,false);
+}
 starter();
 })();
