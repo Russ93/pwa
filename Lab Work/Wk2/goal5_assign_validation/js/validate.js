@@ -1,53 +1,54 @@
 /*
-     Developed by the JavaScript team at Fullsail
-     Date: 1306
+Name: Russell Schlup
+Date: September 13, 2013
 */
 
 (function(){
-var pass = 'the RegEx .test statement is needed here';
-var errorMsg = inputName.nextSibling.nextSibling.nextSibling.nextSibling;
-var formData = {
+var dom = {
 	usr:document.querySelector("#f_username"),
-	mail:document.querySelector("#f_email"),
+	email:document.querySelector("#f_email"),
+	phone:document.querySelector("#f_phone"),
 	pwd:document.querySelector("#f_password"),
-	phone:document.querySelector("f_phone"),
-	ssn:document.querySelector("ssn")
-}
+	ssn:document.querySelector("#f_ssn")
+};
 
-function myform.onsubmit(e){
-	//Below is one example of the validateField call with an argument.
-	//You must dynamically retrieve the ID name from the DOM/HTML.
+myform.onsubmit = function(e){
 
-	validateField(formData.usr);  //id = is the form input field ID
-	validateField(formData.mail);
-	validateField(formData.pwd);
-	validateField(formData.phone);
-	validateField(formData.ssn);
+	validateField(dom.usr);
+	validateField(dom.email);
+	validateField(dom.phone);
+	validateField(dom.pwd);
+	validateField(dom.ssn);
 
 	e.preventDefault();
 	return false;
 };
-
 function validateField(inputName){
-
-	if (inputName.name === 'id name goes here'){
-		var pattern = /^([A-Z][a-z]*(\s))+[A-Z][a-z]*$/;
-		//You will need to create an else-if statement for each input field id.  The
-		//format will be similar to the above IF statement.
-	};
+	if (inputName.name === 'f_username'){
+		var pattern = /^([A-Z][a-z]+)\s([A-Z][a-zA-Z-]+)$/;
+	}else if(inputName.name === 'f_email'){
+		var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+	}else if(inputName.name === 'f_phone'){
+		var pattern = /((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}/;
+	}else if(inputName.name === 'f_password'){
+		var pattern = /^[a-zA-Z]\w{3,14}$/;
+	}else if(inputName.name === 'f_ssn'){
+		var pattern = /^\d{3}-\d{2}-\d{4}$/; 
+	}
 	
+	var pass = pattern.test(inputName.value);
+	var errorMsg = inputName.nextSibling.nextSibling.nextSibling.nextSibling;
+
 	if (!pass || inputName.value.length < 2){
 		errorMsg.style.display='block';
-		inputName.style.backgroundColor = 'red';
+		inputName.style.backgroundColor = '#fee';
 	} else if (pass && inputName.value.length > 5){
 		errorMsg.style.display='none';
-		inputName.style.backgroundColor = 'green';
+		inputName.style.backgroundColor = '#dfd';
 	} else {
 		errorMsg.style.display='none';
-		inputName.style.backgroundColor = 'white';
+		inputName.style.backgroundColor = '#fff';
 	};
-};
+	return false;
+	};
 })();  // end wrapper
-
-
-
