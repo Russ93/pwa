@@ -9,15 +9,11 @@
 
 //Game variables
 (function (){
-	var domStuff = {
-		btn: document.querySelector("button"),
-		somethingElse: ""
+	var ran = Math.round(Math.random()*(10-1)+1);
+	var dom = {
+		output: document.querySelector("#output");
+		input: document.querySelector("#input");
+		btn: document.querySelector("button");
 	}
-	
-	domStuff.btn.addEventListener("click",onClick,false);
-	
-	function onClick(e){
-		console.log("sdxfgcjhvkblm;")
-	}
-	
+	dom.btn.addEventListener("click",checker,false);
 })();

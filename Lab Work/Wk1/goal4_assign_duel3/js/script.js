@@ -14,14 +14,31 @@ var dom = {
 		rndT: document.querySelector("h4#round")
 };
 
-var p1 = ["Kabal: ", 100, 25];
-var p2 = ["Kratos: ", 100, 20];
+var p1 = ["Kabal: ", 100, 30];
+var p2 = ["Kratos: ", 100, 30];
 
 var rnd = 0;
-
 function starter(){
-		dom.kabal.innerHTML = p1[0]+String(p1[1]);
-		dom.kratos.innerHTML = p2[0]+String(p2[1]);
+	dom.kabal.innerHTML = p1[0]+String(p1[1]);
+	dom.kratos.innerHTML = p2[0]+String(p2[1]);
+}
+function checker(){
+	var result = winnerCheck();
+	starter();
+	if (result==="no winner"){
+		rnd++;
+	dom.rndT.innerHTML = "Round"+String(rnd);
+	}else{
+		dom.rndT.innerHTML = String(result);
+	}
+	if(rnd>11||p1[1]<1||p2[1]<1){
+		winnerCheck();
+		dom.btn.innerHTML = "Rematch!";
+		r();
+	}else{
+		fight();
+		dom.btn.innerHTML = "Fight!";
+	}
 }
 function fight(){
 	var dmg1 = Math.round(Math.random()*(p1[2]));
@@ -33,14 +50,14 @@ function fight(){
 	if(result=="no winner"){
 		p2[1]-=dmg1;
 	}
-	if (result==="no winner"){
-		starter();	
+	/*
+if (result==="no winner"){
 		rnd++;
 		dom.rndT.innerHTML = "Round"+String(rnd);
 	}else{
 		dom.rndT.innerHTML = String(result);
 	}
-	console.log(result);
+*/
 }// fight
 function winnerCheck(){
 	var result= "no winner";
@@ -57,13 +74,10 @@ function r(){
 	p1[1] = 100;
 	p2[1] = 100;
 	result= "no winner";
+	rnd = 0;
 	starter();
 }
-if(p1[1]>0&&p2[1]>0){
-	dom.btn.addEventListener("click",fight,false);
-}else{
-	dom.btn.removeEventListener("click",fight,false);
-	dom.btn.addEventListener("click",r,false);
-}
-starter();
+
+dom.btn.addEventListener("click",checker,false);
+starter();	
 })();
