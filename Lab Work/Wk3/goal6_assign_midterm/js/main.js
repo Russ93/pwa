@@ -78,7 +78,8 @@ function avg(){
 		gpaAdd+=students[c].gpa[i];
 	}
 	gpaAdd/=students[c].gpa.length;
-	students[c].gpaAvg = gpaAdd;
+	var gpa = Math.round(gpaAdd*100)/100;
+	students[c].gpaAvg = gpa;
 }// avg
 function date(d){
 	return d.getMonth()+"/"+d.getDate()+"/"+d.getFullYear();
