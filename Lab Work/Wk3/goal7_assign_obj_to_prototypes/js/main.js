@@ -4,3 +4,7 @@
  * Goal: Goal7
  */
 
+(function(){
+var names =[John, James, Jason, Jesus, Jose];
+
+})();
