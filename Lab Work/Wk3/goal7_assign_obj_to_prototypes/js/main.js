@@ -3,8 +3,18 @@
  * Class: PWA
  * Goal: Goal7
  */
+(function (){
+var interval = setInterval(update, 1000/2);
+var names = ["Jason", "Daniel", "Jose", "Gillian", "Victoria"];
+var p=new Person(names);
 
-(function(){
-var names =[John, James, Jason, Jesus, Jose];
+p.name();
+p.job();
+p.action();
 
+function update(){
+	p.name();
+	p.job();
+	p.action();
+}
 })();
