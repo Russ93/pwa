@@ -1,16 +1,15 @@
 /**
- * Created by the JavaScript Development Team
+ * Created by Russell Schlup
  * Class: PWA
  * Goal: Goal7
+ * Date September 19th, 2013
  */
 (function (){
-var interval = setInterval(update, 1000/2);
+var interval = setInterval(update, 1000/1);
 var names = ["Jason", "Daniel", "Jose", "Gillian", "Victoria"];
 var p=new Person(names);
 
-p.name();
-p.job();
-p.action();
+update()
 
 function update(){
 	p.name();
