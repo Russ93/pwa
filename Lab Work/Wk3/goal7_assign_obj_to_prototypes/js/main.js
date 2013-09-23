@@ -6,8 +6,10 @@
  */
 (function (){
 var interval = setInterval(update, 1000/1);
-var names = ["Jason", "Daniel", "Jose", "Gillian", "Victoria"];
-var p=new Person(names);
+var n = ["Jason", "Daniel", "Jose", "Gillian", "Victoria"];
+var j =["animator","coder","technitian","pilot","mechanic"];
+var a =["dreaming","coding","studying","flying","nothing"];
+var p=new Person(n,j,a);
 
 update()
 

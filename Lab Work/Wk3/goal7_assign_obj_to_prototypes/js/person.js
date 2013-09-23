@@ -5,10 +5,10 @@
  * Date: September 19th, 2013
  */
 (function(){
-function Person(n){
+function Person(n,f,a){
 	this.names=n;
-	this.jobs=["animator","coder","technitian","pilot","mechanic"];
-	this.actions=["dreaming","coding","studying","flying","nothing"];
+	this.jobs=f;
+	this.actions=a;
 }
 Person.prototype.name=function(){
 	var self=this;
