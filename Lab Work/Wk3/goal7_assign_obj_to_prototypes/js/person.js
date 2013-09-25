@@ -59,5 +59,4 @@ Person.prototype.action=function(){
 	}//collumn 3
 }//.prototype.action
 	window.Person=Person;
-	// window.update=update;
 })();
