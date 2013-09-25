@@ -1,6 +1,6 @@
 /*
 	* Russell Schlup
-	* September 25, 2013
+	* September 16, 2013
 	* Mid Terms for PWA-1
 */
 (function(){
@@ -13,17 +13,19 @@ var dom = {
 	btn: document.querySelector(".buttonred")
 }
 console.log("********** Below Shows The Original Objects **********");
-function student(name,address,gpa){
-	var stud={name: name, 
-	address: address, 
-	gpa: gpa,
-	gpaAvg: 0}
-	return stud;
-}
 var students = [
-	student("James Bond","3300 University Winter Park Florida",[2.5, 3.5, 4.0]),
-	student("Super Man","123 Test Dr. Winter Park Florida",[3.2, 4.0, 2.2])
-	];
+	{
+	name: "James Bond", 
+	address: "3300 University Winter Park Florida", 
+	gpa: [2.5, 3.5, 4.0],
+	gpaAvg: 0
+	},
+	{
+	name: "Super Man", 
+	address: "123 Test Dr. Winter Park Florida", 
+	gpa: [3.2, 4.0, 2.2],
+	gpaAvg: 0
+	}];
 var c = 0;
 
 function adder(){
@@ -32,9 +34,18 @@ function adder(){
 	if(students.length==3){
 		console.log("********** Below Shows The New Objects Added To The Original Object **********");
 	}
-	var studentA =[
-	student("Aqua Man","123 Test Dr. Winter Park Florida",[4.0, 4.0, 4.0]),
-	student("Robin","123 Test Dr. Winter Park Florida",[4.0, 3.5, 3.0])];
+	var studentA =[{
+	name: "Aqua Man", 
+	address: "123 Test Dr. Winter Park Florida", 
+	gpa: [4.0, 4.0, 4.0],
+	gpaAvg: 0
+	},
+	{
+	name: "Robin", 
+	address: "123 Test Dr. Winter Park Florida", 
+	gpa: [4.0, 3.5, 3.0],
+	gpaAvg: 0
+	}];
 	
 	if(amt<2){
 		students.push(studentA[c-1]);	
