@@ -3,3 +3,10 @@
 	color: 333;
 	background-color: #fefefe;
 }
+html{
+	background-color: #dde;
+}
+body{
+	width: 100%;
+	height: 700px;
+}

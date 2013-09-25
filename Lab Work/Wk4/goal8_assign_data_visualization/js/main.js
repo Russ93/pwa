@@ -1,22 +1,55 @@
+/**
+ * Created by Russell Schlup
+ * Class: PWA
+ * Goal: Goal_9
+ * Date: September 19th, 2013
+ */
 (function(){
-var canvas = document.createElement("canvas");
-
+/*----------Instantiate Canvas----------*/
+var canvas=document.createElement("canvas");
 document.body.appendChild(canvas);
-canvas.width=800;
-canvas.height=600;
+canvas.width=document.body.clientWidth;
+canvas.height=document.body.clientHeight;
 var ctx=canvas.getContext("2d");
-var ratio=8000/canvas.width;
+
+/*----------Normals----------*/
+var ratio=6000/canvas.height;
 var blue="40C4F6";
 var orange="FFA13A";
 
-circle(blue,650,450,1458,"China","1,458");
-circle(orange,200,200,1398,"India","1,398");
-circle(orange,50,50,352,"USA","352");
-circle(blue,90,90,273,"Indonesia","273")
+/*----------Background----------*/
+ctx.beginPath();
+ctx.rect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="DDE";
+ctx.fill();
 
-function circle(color,x,y,diameter,text,num){
-/*----------Circle Properties----------*/
-	var size= diameter/ratio;
+/*----------Doc Text----------*/
+ctx.fillStyle="#000";
+ctx.font="24px Muli";
+ctx.fillText("This is a graph on the worlds population",4000/ratio,1000/ratio);
+ctx.fillText("In the MILLIONS",4000/ratio,1000/ratio+24);
+
+
+/*----------Countries----------*/
+circle(blue,650,450,1458,"China","1,458");
+circle(orange,150,150,1398,"India","1,398");
+circle(blue,300,250,352,"USA");
+circle(orange,500,550,273,"Indonesia");
+circle(blue,30,30,226,"Pakistan");
+circle(orange,550,300,223,"Brazil");
+circle(blue,200,310,208,"Nigeria");
+circle(orange,480,450,198,"Bangladesh");
+circle(blue,310,150,137,"Russia");
+circle(orange,650,280,126,"Japan");
+
+
+function circle(color,x,y,diameter,text,num){// Function which creates the circles
+	var size=diameter/ratio;
+	x*=10
+	y*=10
+	x=x/ratio;
+	y=y/ratio;
+	/*----------Circle Properties----------*/
 	ctx.beginPath();
 	ctx.strokeStyle=color;
 	ctx.fillStyle=color;
@@ -25,21 +58,23 @@ function circle(color,x,y,diameter,text,num){
 	ctx.stroke();
 	ctx.fill();
 	
-/*----------Text In the Bubble----------*/
-	var fNum=36
+	/*----------Text In the Bubble----------*/
+	var fSize=36;// orig size
 	if(size<100){
-		fNum=fNum/(ratio/2);
+		fSize=fSize/(ratio/2); //fits the size
+		num=String(diameter); // changes num for redundancy
 	}
-	var castFNum = String(fNum+"px "+"Muli");
-	ctx.beginPath();
+	/*----------Country formatt----------*/
+	var fCast=String(fSize+"px Muli");
 	ctx.fillStyle="EFEFEF";
-	ctx.font=castFNum;
-	ctx.fillText(text,(x-size/2),y);
-	
-	ctx.beginPath();
+	ctx.font=fCast;
+	ctx.textAlign="center"; 
+	ctx.fillText(text,x,y);
+	/*----------Number Formatt----------*/
 	ctx.fillStyle="EFEFEF";
-	ctx.font=castFNum;
-	ctx.fillText(num,(x-size/2),y+fNum);
+	ctx.font=fCast;
+	ctx.textAlign="center"; 
+	ctx.fillText(num,x,y+fSize);
 }
 
 /*----------Materials----------
@@ -61,6 +96,11 @@ ctx.strokeStyle="#000";
 ctx.moveTo(0,canvas.height/2);
 ctx.lineTo(canvas.width,canvas.height/2);
 ctx.stroke();
+
+----------Rect----------
+ctx.rect(canvas.width/2,canvas.height/2,canvas.height/2,canvas.width/2);
+ctx.stroke();
+
 ----------Text----------
 ctx.beginPath();
 ctx.fillStyle="#000";
