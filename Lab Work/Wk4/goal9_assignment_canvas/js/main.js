@@ -17,21 +17,32 @@ window.addEventListener("keydown", onDown);
 window.addEventListener("keyup", onUp);
 
 function onDown(e){
-	console.log(e.keyCode);
-	if((ball.x+ball.width/2)<canvas.width||(ball.x-ball.width/2)>0){
-		if(e.keyCode==37){
-			ball.vx=-5;
-		}
-		if(e.keyCode==39){
+	console.log("ball:"+(ball.x+ball.radius));
+	console.log("canvas:"+canvas.width);
+	if(e.keyCode==39){
+		if((ball.x+ball.radius)<canvas.width){
 			ball.vx=5;
+		}else{
+			ball.vx=0;
+		}
+	}else if(e.keyCode==37){
+		if((ball.x-ball.radius)>0){
+			ball.vx=-5;
+		}else{
+			ball.vx=0;
 		}
 	}
-	if((ball.y-ball.height/2)<canvas.height||(ball.y-ball.height/2)>0){
-		if(e.keyCode==38){
+	if(e.keyCode==38){
+		if((ball.y-ball.radius)>0){
 			ball.vy=-5;
+		}else{
+			ball.vy=0;
 		}
-		if(e.keyCode==40){
+	}else if(e.keyCode==40){
+		if((ball.y+ball.radius)<canvas.height){
 			ball.vy=5;
+		}else{
+			ball.vy=0;
 		}
 	}
 }
