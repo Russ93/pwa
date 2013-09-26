@@ -13,16 +13,15 @@ var dom = {
 	btn: document.querySelector(".buttonred")
 }
 console.log("********** Below Shows The Original Objects **********");
-function student(name,address,gpa){
-	var stud={name: name, 
-	address: address, 
-	gpa: gpa,
-	gpaAvg: 0}
-	return stud;
+function Student(name,address,gpa){
+	this.name= name;
+	this.address= address;
+	this.gpa= gpa;
+	this.gpaAvg= 0;
 }
 var students = [
-	student("James Bond","3300 University Winter Park Florida",[2.5, 3.5, 4.0]),
-	student("Super Man","123 Test Dr. Winter Park Florida",[3.2, 4.0, 2.2])
+	new Student("James Bond","3300 University Winter Park Florida",[2.5, 3.5, 4.0]),
+	new Student("Super Man","123 Test Dr. Winter Park Florida",[3.2, 4.0, 2.2])
 	];
 var c = 0;
 
@@ -33,16 +32,18 @@ function adder(){
 		console.log("********** Below Shows The New Objects Added To The Original Object **********");
 	}
 	var studentA =[
-	student("Aqua Man","123 Test Dr. Winter Park Florida",[4.0, 4.0, 4.0]),
-	student("Robin","123 Test Dr. Winter Park Florida",[4.0, 3.5, 3.0])];
-	
+	new Student("Aqua Man","123 Test Dr. Winter Park Florida",[4.0, 4.0, 4.0]),
+	new Student("Robin","123 Test Dr. Winter Park Florida",[4.0, 3.5, 3.0]),
+	new Student("Spider Man","123 Forest Hills st. Queens New York",[2.0,1.5,3.0]),
+	new Student("Yo Momma","30000 Mayonaise Dr. Winter Park Florida",[1.0, 1.5, 1.0])
+	]
 	if(amt<2){
-		students.push(studentA[c-1]);	
+		if(!(studentA[c-1]===undefined)){students.push(studentA[c-1]);}
 	}
 }// adder
 function checker(){
-	if(students.length<6){
-		avg();
+	if(c<students.length){
+		students[c].avg();
 		inst();
 		adder();
 	}else{
@@ -61,7 +62,7 @@ function inst(){
 	con();
 	c++;
 }// inst
-function avg(){
+Student.prototype.avg=function(){
 	var gpaAdd = 0;
 	for(var i=0;i<students[c].gpa.length; i++){
 		gpaAdd+=students[c].gpa[i];
@@ -71,7 +72,7 @@ function avg(){
 	students[c].gpaAvg = gpa;
 }// avg
 function date(d){
-	return d.getMonth()+"/"+d.getDate()+"/"+d.getFullYear();
+	return (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear();
 	
 }// date
 function con(){
@@ -79,7 +80,7 @@ function con(){
 	console.log("Name: "+students[c].name);
 	console.log("Address: "+students[c].address);
 	console.log("GPA: "+students[c].gpa);
-	console.log("Date: "+d.getMonth()+"/"+d.getDate()+"/"+d.getFullYear());
+	console.log("Date: "+date(d));
 	console.log("Average GPA: "+students[c].gpaAvg);
 }// con
 
