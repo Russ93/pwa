@@ -17,32 +17,34 @@ window.addEventListener("keydown", onDown);
 window.addEventListener("keyup", onUp);
 
 function onDown(e){
-	console.log("ball:"+(ball.x+ball.radius));
-	console.log("canvas:"+canvas.width);
-	if(e.keyCode==39){
-		if((ball.x+ball.radius)<canvas.width){
-			ball.vx=5;
+	console.log("bally:"+(ball.y+ball.radius));
+	console.log("canvas:"+canvas.height);
+	if(e.keyCode==40){
+		if((ball.y+ball.radius)<canvas.height){
+			ball.vy=5;
 		}else{
-			ball.vx=0;
-		}
-	}else if(e.keyCode==37){
-		if((ball.x-ball.radius)>0){
-			ball.vx=-5;
-		}else{
-			ball.vx=0;
+			ball.vy=-5;
 		}
 	}
 	if(e.keyCode==38){
 		if((ball.y-ball.radius)>0){
 			ball.vy=-5;
 		}else{
-			ball.vy=0;
-		}
-	}else if(e.keyCode==40){
-		if((ball.y+ball.radius)<canvas.height){
 			ball.vy=5;
+		}
+	}
+	if(e.keyCode==39){
+		if((ball.x+ball.radius)<canvas.width){
+			ball.vx=5;
 		}else{
-			ball.vy=0;
+			ball.vx=-5;
+		}
+	}
+	if(e.keyCode==37){
+		if((ball.x-ball.radius)>0){
+			ball.vx=-5;
+		}else{
+			ball.vx=5;
 		}
 	}
 }
@@ -62,11 +64,12 @@ function onUp(e){
 }
 (function update(){
 	ctx.clearRect(0,0,canvas.width,canvas.height);
-	// ball.x=mouse.x;
-	// ball.y=mouse.y;
+	if((ball.y+ball.radius)>canvas.height){
+		ball.vy=0;
+	}
 	ball.x+=ball.vx;
 	ball.y+=ball.vy;
 	ball.update(ctx);
 	requestAnimationFrame(update);
-	})();
+})();
 })();
